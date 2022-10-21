@@ -1,0 +1,40 @@
+.navbar{
+    position: relative;
+    display: flex;
+    width: 100vw;
+    background-color: #30383F;
+    padding: 10px 0px;
+}
+.filterButton{
+    background-color: #FA4454;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: calc(50% + 10px);
+    left: 50%;
+    margin: auto;
+}
+.filterBar{
+    transition: top 100ms;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0%;
+    z-index: -1;
+    background-color: #D9D9D9;
+    width: 100vw;
+    position: absolute;
+}
+.filterBar:active{
+    top: 100%;
+}
+.filterBar img{
+    height: 30px;
+}
+.separator{
+    display: flex;
+    gap:20px
+}
