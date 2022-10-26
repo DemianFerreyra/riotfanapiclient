@@ -1,6 +1,7 @@
 import { ProductsState } from "../../interfaces";
 const initialState: ProductsState = {
     characters: [],
+    error: '',
 };
 
 export function characterReducer(state = initialState, action: any) {

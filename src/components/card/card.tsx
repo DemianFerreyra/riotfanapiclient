@@ -8,7 +8,7 @@ interface Props {
 const Card: FC<Props> = ({cards}) =>{
   console.log(cards)
   return (
-    <section>
+    <section className={s.Card}>
         <img src={cards.pngURL} alt={cards.name}/>
         <h2>{cards.name}</h2>
         <button>ver mas</button>
