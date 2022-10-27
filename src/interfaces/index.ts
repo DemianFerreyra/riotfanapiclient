@@ -10,8 +10,10 @@ export interface Cards {
     name: string;
     id: Number;
     pngURL: string;
+    role: string;
 }
 export interface ProductsState {
     characters: Array<Cards>,
+    filteredChars: Array<Cards>,
     error: string,
 };

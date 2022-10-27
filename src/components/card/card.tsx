@@ -6,7 +6,6 @@ interface Props {
   cards: Cards;
 }
 const Card: FC<Props> = ({cards}) =>{
-  console.log(cards)
   return (
     <section className={s.Card}>
         <img src={cards.pngURL} alt={cards.name}/>
