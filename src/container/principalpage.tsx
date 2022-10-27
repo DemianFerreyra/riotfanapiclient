@@ -19,7 +19,7 @@ const PrincipalPage = () => {
   }, [dispatch]);
 
   return (
-    <article className="PrincipalPage">
+    <article className={s.PrincipalPage}>
       <Navbar
         buttons={["sobre mi"]}
         filters={[
@@ -33,9 +33,6 @@ const PrincipalPage = () => {
             imageURL:
               "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt63e21ca9443dce8e/5eb270f43b09c042ddca1353/Controller.png",
           },
-        ]}
-        inputFilters={[
-          { name: "ByName", options: ["Ascendant", "Descendant"] },
         ]}
       />
       {allCharacters.map((char: Cards, index: number) => (

@@ -26,7 +26,21 @@ export const GetAllCharacters = () => {
 
 export const FilterBy = (filter: string) => {
   return async function (dispatch: Dispatch<any>) {
-    console.log(`Estoy filtrando segun: ${filter}`);
     dispatch({ type: "FilterBy", payload: filter });
+  };
+};
+
+export const OrderBy = (orderedArray: Array<Cards>) => {
+  return async function (dispatch: Dispatch<any>) {
+    setTimeout(function(){
+      dispatch({ type: "OrderBy", payload: orderedArray });
+    }, 100);
+  };
+
+};
+
+export const ResetFilters = () => {
+  return async function (dispatch: Dispatch<any>) {
+    dispatch({ type: "ResetFilters" });
   };
 };

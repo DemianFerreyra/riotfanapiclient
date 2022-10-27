@@ -1,3 +1,4 @@
+import { compareFn } from "../../helpers";
 import { ProductsState } from "../../interfaces";
 const initialState: ProductsState = {
   characters: [],
@@ -20,6 +21,20 @@ export function characterReducer(state = initialState, action: any) {
         filteredChars: state.characters.filter(
           (char: any) => char.role === action.payload
         ),
+        error: "",
+      };
+    case "OrderBy":
+      console.log(action.payload)
+      return {
+        ...state,
+        filteredChars: action.payload,
+        error: "",
+      };
+    case "ResetFilters":
+      console.log("a")
+      return {
+        ...state,
+        filteredChars: [],
         error: "",
       };
     default:
