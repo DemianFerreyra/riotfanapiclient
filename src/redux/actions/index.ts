@@ -24,7 +24,7 @@ export const GetAllCharacters = () => {
   };
 };
 
-export const FilterBy = (filter: string) => {
+export const FilterBy = (filter: Array<String>) => {
   return async function (dispatch: Dispatch<any>) {
     dispatch({ type: "FilterBy", payload: filter });
   };

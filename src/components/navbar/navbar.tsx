@@ -16,6 +16,7 @@ const Navbar: FC<Props> = ({buttons, filters}) =>{
     show : 0,
     index: -1
   });  
+  const [Role, setRole] = useState(Array<String>);  
   const filteredChars = useSelector(
     (state: Store) => state.characterReducer.filteredChars
   );
@@ -28,8 +29,15 @@ const Navbar: FC<Props> = ({buttons, filters}) =>{
     }
   }
   const FilterButton = (e:any) =>{
-    e.preventDefault();
-    store.dispatch(FilterBy(e.target.alt));
+    let roles : Array<String> = [];
+    if(Role.includes(e.target.alt)){
+      roles = Role.filter(el => el !== e.target.alt)
+      setRole(roles);
+    }else{
+      roles = [...Role, e.target.alt];
+      setRole(roles);
+    }
+    store.dispatch(FilterBy(roles));
   }
   const OrderButton = (e:any) =>{
     e.preventDefault();
@@ -53,11 +61,11 @@ const Navbar: FC<Props> = ({buttons, filters}) =>{
            <option value="descendant">Descendant</option>
          </select>
         </div>
-        <div className={s.separator}>
-        {filters.map((filter, index) => (
-        <img src={filter.imageURL} alt={filter.name} onClick={FilterButton} key={index}/>
-        ))}
-        </div>
+        <section className={s.separator}>
+        {filters.map((filter, index) => 
+          Role.includes(filter.name)?(<img src={filter.imageURL} alt={filter.name} onClick={FilterButton} key={index} style={{backgroundColor: "rgb(60,60,60)"}}/>):(<img src={filter.imageURL} alt={filter.name} onClick={FilterButton} key={index} style={{backgroundColor: "darkgray"}}/>)
+        )}
+        </section>
       </nav>
     </header>
   );

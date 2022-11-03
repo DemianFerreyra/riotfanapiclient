@@ -18,20 +18,18 @@ export function characterReducer(state = initialState, action: any) {
     case "FilterBy":
       return {
         ...state,
-        filteredChars: state.characters.filter(
-          (char: any) => char.role === action.payload
-        ),
+        filteredChars: action.payload.length?(state.characters.filter(
+          (char: any) => action.payload.includes(char.role)
+        )):(state.characters),
         error: "",
       };
     case "OrderBy":
-      console.log(action.payload)
       return {
         ...state,
         filteredChars: action.payload,
         error: "",
       };
     case "ResetFilters":
-      console.log("a")
       return {
         ...state,
         filteredChars: [],
