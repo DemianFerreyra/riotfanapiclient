@@ -9,7 +9,16 @@ export interface Cards {
     role: string;
 }
 export interface ProductsState {
+    character?: Array<Detail>,
     characters: Array<Cards>,
     filteredChars: Array<Cards>,
     error: string,
+};
+export interface Detail {
+    name: string;
+    pngURL: string;
+    images: Array<string>;
+    description: string;
+    role: string;
+    country: string;
 };

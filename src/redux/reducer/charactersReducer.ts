@@ -1,6 +1,6 @@
-import { compareFn } from "../../helpers";
 import { ProductsState } from "../../interfaces";
 const initialState: ProductsState = {
+  character: [],
   characters: [],
   filteredChars: [],
   error: "",
@@ -15,12 +15,19 @@ export function characterReducer(state = initialState, action: any) {
         filteredChars: action.payload,
         error: "",
       };
+    case "GetDetail":
+      console.log(action.payload)
+      return {
+        ...state,
+        character: action.payload,
+        error: "",
+      };
     case "FilterBy":
       return {
         ...state,
-        filteredChars: action.payload.length?(state.characters.filter(
+        filteredChars: action.payload.length ? (state.characters.filter(
           (char: any) => action.payload.includes(char.role)
-        )):(state.characters),
+        )) : (state.characters),
         error: "",
       };
     case "OrderBy":

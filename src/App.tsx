@@ -1,7 +1,7 @@
-import React from 'react';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrincipalPage from './container/principalpage';
+import DetailPage from './container/detailpage';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
     <div className='app'>
       <Routes>
         <Route path={'/'} element ={<PrincipalPage/>}/>
+        <Route path={'/:id'} element ={<DetailPage/>}/>
       </Routes>
     </div>
   </BrowserRouter>

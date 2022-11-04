@@ -1,11 +1,12 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { Cards } from "../../interfaces";
+import { Cards, Detail } from "../../interfaces";
 const BACK_URL = process.env.REACT_APP_BACKEND_URL;
 
 interface AllCards {
   type: string;
-  payload: Array<Cards>;
+  payload?: Array<Cards>;
+  detail?: Detail;
 }
 
 export const GetAllCharacters = () => {
@@ -21,6 +22,24 @@ export const GetAllCharacters = () => {
       return card;
     });
     dispatch({ type: "GetCharacters", payload: mapped });
+  };
+};
+
+export const GetDetail = (id: any) => {
+  return async function (dispatch: Dispatch<AllCards>) {
+    const allCharacters = await axios.get(`${BACK_URL}/characters?id=${id.id}`);
+    const mapped = allCharacters.data.map((char: any) => {
+      const detail: Detail = {
+        name: char.name,
+        pngURL: char.png,
+        role: char.role,
+        images: char.images,
+        description: char.description,
+        country: char.country,
+      };
+      return detail;
+    });
+    dispatch({ type: "GetDetail", payload: mapped });
   };
 };
 
